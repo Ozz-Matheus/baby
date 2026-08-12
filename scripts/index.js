@@ -70,3 +70,126 @@ function initObserver() {
   els.forEach(el => obs.observe(el));
 }
 
+// LISTA DE REGALOS MODAL
+
+// URL de tu Apps Script implementado como Web App
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-aJss7tTXF_6lflJDXBG_0PQJFqWjnjoQUgd2dYOi7rPc8-fVYWzi-vvP4yTrQK8fBQ/exec";
+
+let regalosCache = [];
+let invitadosCache = [];
+
+function openGiftsModal() {
+  document.getElementById('gifts-modal').classList.add('active');
+  loadGiftsData();
+}
+
+function closeGiftsModal() {
+  document.getElementById('gifts-modal').classList.remove('active');
+}
+
+// Cargar Datos desde Google Sheets
+function loadGiftsData() {
+  const loader = document.getElementById('gifts-loader');
+  const container = document.getElementById('gifts-list');
+  
+  loader.style.display = 'block';
+  container.style.display = 'none';
+
+  fetch(APPS_SCRIPT_URL)
+    .then(res => res.json())
+    .then(data => {
+      regalosCache = data.regalos || [];
+      invitadosCache = data.invitados || [];
+      renderGifts();
+      loader.style.display = 'none';
+      container.style.display = 'flex';
+    })
+    .catch(err => {
+      console.error(err);
+      loader.innerHTML = '<p style="color:red; font-size: 0.85rem;">Error al cargar los regalos. Intenta de nuevo.</p>';
+    });
+}
+
+// Renderizar Tarjetas de Regalos
+function renderGifts() {
+  const container = document.getElementById('gifts-list');
+  container.innerHTML = '';
+
+  if (regalosCache.length === 0) {
+    container.innerHTML = '<p>No hay regalos en la lista aún.</p>';
+    return;
+  }
+
+  regalosCache.forEach(item => {
+    const isReserved = Boolean(item.reservadoPor);
+    
+    const card = document.createElement('div');
+    card.className = `gift-card ${isReserved ? 'reserved' : ''}`;
+
+    // Opciones del select de invitados
+    let guestOptions = `<option value="">-- Selecciona tu nombre --</option>`;
+    invitadosCache.forEach(inv => {
+      guestOptions += `<option value="${inv}">${inv}</option>`;
+    });
+
+    card.innerHTML = `
+      <div class="gift-header">
+        <div>
+          <div class="gift-title font-caps">${item.nombre}</div>
+          ${item.link ? `<a href="${item.link}" target="_blank" class="gift-link">Ver sugerencia de regalo</a>` : ''}
+        </div>
+        <span class="font-display gift-status ${isReserved ? 'taken' : 'free'}">
+          ${isReserved ? 'Reservado' : 'Disponible'}
+        </span>
+      </div>
+
+      ${isReserved ? `
+        <p class="font-caps" style="font-size: 0.75rem; color: #555; margin: 0;">
+          <strong class="font-display">✅</strong>
+        </p>
+      ` : `
+        <div class="gift-action-box" id="action-box-${item.id}">
+          <select id="select-guest-${item.id}" class="gift-select">
+            ${guestOptions}
+          </select>
+          <button class="button" onclick="reserveGift('${item.id}')">
+            Apartar este Regalo
+          </button>
+        </div>
+      `}
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// Procesar Reservado
+function reserveGift(idRegalo) {
+  const select = document.getElementById(`select-guest-${idRegalo}`);
+  const nombreInvitado = select.value;
+
+  if (!nombreInvitado) {
+    alert("Por favor selecciona tu nombre del desplegable.");
+    return;
+  }
+
+  const actionBox = document.getElementById(`action-box-${idRegalo}`);
+  actionBox.innerHTML = `<p style="font-size: 0.8rem; color: #555;">Guardando reservado...</p>`;
+
+  // POST a Google Apps Script
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors', // Apps Script no-cors redirect handling
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ idRegalo: idRegalo, nombreInvitado: nombreInvitado })
+  })
+  .then(() => {
+    alert(`¡Gracias ${nombreInvitado}! Has reservado este regalo exitosamente.`);
+    loadGiftsData(); // Recargar datos para actualizar la UI
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Hubo un problema al reservar el regalo. Intenta nuevamente.");
+    loadGiftsData();
+  });
+}

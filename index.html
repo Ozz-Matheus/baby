@@ -53,7 +53,7 @@
       </svg>
     </div>
     <p>Tienes una invitación especial</p>
-    <button id="open-btn" class="button" onclick="openInvitation()">ABRIR</button>
+    <button id="open-btn" class="button font-display" onclick="openInvitation()">ABRIR</button>
   </div>
   
   <div id="main" class="card" style="opacity:0;transition:opacity .8s ease;">
@@ -250,9 +250,9 @@
         aquí encontrarás algunas sugerencias. <br>
       </p>
 
-      <a class="button" href="#" target="_blank" rel="noopener noreferrer">
+      <button id="open-gifts-btn" class="button" onclick="openGiftsModal()">
         Ver lista de Regalos
-      </a>
+      </button>
     </div>
 
     <!-- ══════════════════════════════════════
@@ -273,6 +273,28 @@
     </div>
 
   </div><!-- /card -->
+
+  <!-- MODAL DE REGALOS -->
+  <div id="gifts-modal" class="modal-overlay">
+    <div class="modal-content card">
+      <button class="modal-close" onclick="closeGiftsModal()">&times;</button>
+      
+      <p class="t-location font-script" style="margin-bottom: 8px;">Mesa de Regalos</p>
+      <p class="t-body font-caps" style="font-size: 0.85rem; margin-bottom: 20px;">
+        Hemos preparado una lista con algunas sugerencias. 🎁 
+        Selecciona un regalo para apartarlo a tu nombre. 💕
+      </p>
+      <!-- Loader de carga -->
+      <div id="gifts-loader" class="loader-container">
+        <div class="spinner"></div>
+        <p class="font-caps" style="margin-top: 10px; font-size: 0.8rem;">Cargando regalos...</p>
+      </div>
+
+      <!-- Lista de regalos -->
+      <div id="gifts-list" class="gifts-list" style="display: none;"></div>
+    </div>
+  </div>
+  
   <script src="scripts/index.js"></script>
 
 </body>
