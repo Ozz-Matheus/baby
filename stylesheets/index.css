@@ -1,0 +1,439 @@
+@charset "UTF-8";
+/* ─────────────────────────────────────────
+       RESET
+    ───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background: #95bfe5;
+}
+
+/* ─────────────────────────────────────────
+       TARJETA PRINCIPAL — 409 × auto (vertical)
+    ───────────────────────────────────────── */
+.card {
+  width: 409px;
+  background: #A3C9FF;
+  background: linear-gradient(180deg, rgba(163, 201, 255, 1) 0%, rgba(255, 255, 240, 1) 50%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────
+       TIPOGRAFÍAS
+       TODO: importa o enlaza aquí tus fuentes reales
+       Ejemplo:
+       @import url('https://fonts.googleapis.com/css2?family=TuFuente');
+    ───────────────────────────────────────── */
+.font-display {
+  font-family: "Cinzel", serif;
+}
+
+/* TODO: fuente serif grande tipo "BABY" */
+.font-script {
+  font-family: "Rouge Script", cursive;
+}
+
+/* TODO: fuente manuscrita tipo "Liam Gael" */
+.font-caps {
+  font-family: "Cinzel", serif;
+  text-transform: uppercase;
+}
+
+/* TODO: fuente caps tipo "ATENCIÓN, GUERREROS Z" */
+
+/* ─────────────────────────────────────────
+       PLACEHOLDER DE IMAGEN
+       Muestra un recuadro gris con la descripción
+    ───────────────────────────────────────── */
+.img-placeholder {
+  display: block;
+  width: 100%;
+  background: #d0d0d0;
+  border: 2px dashed #999;
+  color: #555;
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+/* Variantes de tamaño */
+.img-placeholder.circle {
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.img-placeholder.circle-lg {
+  border-radius: 50%;
+  width: 190px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.img-placeholder.tall {
+  height: 160px;
+}
+
+.img-placeholder.short {
+  height: 100px;
+}
+
+/* ─────────────────────────────────────────
+       SECCIONES — separan las zonas de la tarjeta
+    ───────────────────────────────────────── */
+.section {
+  padding: 24px 28px;
+  position: relative;
+}
+
+/* ─────────────────────────────────────────
+       TEXTOS — tamaños proporcionales al original
+    ───────────────────────────────────────── */
+
+/* "ATENCIÓN, GUERREROS Z" — pequeño, caps, espaciado */
+.t-attention {
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: #1a3a5c;
+  /* TODO: aplica .font-caps o tu fuente real */
+  /* Mod */
+  position: relative;
+  top: 40px;
+}
+
+/* "UNA NUEVA ENERGÍA..." — mediano, caps */
+.t-subtitulo {
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1.8;
+  color: #1a3a5c;
+  margin-top: 16px;
+  /* TODO: aplica .font-display */
+  /* Mod */
+  position: relative;
+  bottom: 60px;
+}
+
+/* "La Dulce espera está por terminar..." — script mediano */
+.t-script-md {
+  font-size: 18px;
+  color: #4a7a9b;
+  margin-bottom: 10px;
+  /* TODO: aplica .font-script */
+}
+
+/* "BABY" — display grande */
+.t-baby {
+  font-size: 72px;
+  font-weight: 900;
+  color: #1a2e4a;
+  line-height: 1;
+  /* TODO: aplica .font-display */
+}
+
+/* "Shower" — script grande */
+.t-shower,
+.t-location {
+  font-size: 44px;
+  color: #5a7a95;
+  line-height: 1;
+  margin-top: -4px;
+  /* TODO: aplica .font-script */
+}
+
+.t-location {
+  margin-bottom: 16px;
+}
+
+/* "Liam Gael" — script muy grande */
+.t-nombre {
+  font-size: 54px;
+  color: #4a7a9b;
+  margin-top: 8px;
+  /* TODO: aplica .font-script */
+}
+
+/* "MIS PAPITOS" — pequeño caps */
+.t-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #1a3a5c;
+  margin-bottom: 4px;
+  font-weight: 900;
+  /* TODO: aplica .font-caps */
+}
+
+/* "Luz Edith y Esteban" — script mediano, color salmón */
+.t-padres {
+  font-size: 36px;
+  color: #d4826a;
+  margin-bottom: 16px;
+  /* TODO: aplica .font-script */
+}
+
+/* Textos de cuerpo (párrafos con ELLOS YA ESTÁN...) */
+.t-body {
+  font-size: 11.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 2;
+  color: #1a3a5c;
+  margin-bottom: 14px;
+  /* TODO: aplica .font-caps */
+}
+
+/* "NUESTRA AVENTURA COMIENZA EN..." */
+.t-aventura {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.9;
+  color: #1a3a5c;
+  margin-bottom: 18px;
+  /* TODO: aplica .font-caps */
+}
+
+/* ─────────────────────────────────────────
+       BLOQUE DE FECHA
+    ───────────────────────────────────────── */
+.date-mes {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #1a2e4a;
+  margin-bottom: 6px;
+  /* TODO: aplica .font-display */
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid #c0392b;
+  border-bottom: 2px solid #c0392b;
+  padding: 10px 0;
+  margin: 0 10px;
+}
+
+.date-dia-label,
+.date-hora {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a2e4a;
+  /* TODO: aplica .font-display */
+}
+
+.date-numero {
+  flex: 0 0 auto;
+  font-size: 56px;
+  font-weight: 900;
+  color: #1a2e4a;
+  line-height: 1;
+  padding: 0 18px;
+  border-left: 1px solid #c0392b;
+  border-right: 1px solid #c0392b;
+  /* TODO: aplica .font-display */
+}
+
+.date-anio {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #1a2e4a;
+  margin-top: 6px;
+  /* TODO: aplica .font-display */
+}
+
+/* ─────────────────────────────────────────
+       Imagenes fluidas — se adaptan al ancho del contenedor
+    ───────────────────────────────────────── */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── COUNTDOWN ── */
+.countdown-section {
+  padding: 32px 20px 40px;
+  text-align: center;
+  color: #1a2e4a;
+}
+
+.countdown-date {
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.countdown-label-top {
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 900;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 14px;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 18px;
+  border-right: 1px solid rgba(201, 168, 76, .3);
+}
+
+.countdown-item:last-child {
+  border-right: none;
+}
+
+.countdown-num {
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.countdown-unit {
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.countdown-label-bottom {
+  font-style: italic;
+  font-size: 1rem;
+}
+
+/* ─────────────────────────────────────────
+       botón de mapa
+    ───────────────────────────────────────── */
+
+.button {
+  display: inline-block;
+  border: 1px solid #5a7a95;
+  color: #5a7a95;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 9px 22px;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all .3s;
+}
+
+.button:hover {
+  background: #5a7a95;
+  color: white;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-top: 16px;
+}
+
+/* ── ENVELOPE OVERLAY ── */
+#envelope-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #95bfe5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+
+#envelope-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.env-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(253, 253, 253, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.env-icon svg {
+  width: 36px;
+  height: 36px;
+  color: white;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(253, 253, 253, .3);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 14px rgba(253, 253, 253, 0);
+  }
+}
+
+#envelope-overlay p {
+  color: white;
+  font-size: 1.1rem;
+  letter-spacing: .15em;
+}
+
+#open-btn {
+  cursor: pointer;
+}
+
+/* ── FADE-IN ANIMATION ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

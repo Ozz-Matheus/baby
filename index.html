@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baby Shower – Liam Gael</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Rouge+Script&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="stylesheets/index.css">
+</head>
+
+<body>
+
+    <!-- AUDIO -->
+  <audio id="bg-audio" loop>
+    <source src="assets/audio/soundtrack.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- FLOATING MUSIC BUTTON -->
+  <button id="music-btn" onclick="toggleMusic()" title="Música" style="
+  position:fixed; bottom:24px; right:20px; z-index:9998;
+  width:48px; height:48px; border-radius:50%;
+  background:var(--main-text); border:2px solid var(--gold);
+  color:var(--gold); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+  transition: transform .2s, background .3s;
+">
+    <svg id="music-icon-on" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" width="22" height="22">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
+    </svg>
+    <svg id="music-icon-off" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" width="22" height="22" style="display:none;">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+    </svg>
+  </button>
+
+  <!-- ENVELOPE OVERLAY -->
+  <div id="envelope-overlay">
+    <div class="env-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+      </svg>
+    </div>
+    <p>Tienes una invitación especial</p>
+    <button id="open-btn" class="button" onclick="openInvitation()">ABRIR</button>
+  </div>
+  
+  <div id="main" class="card" style="opacity:0;transition:opacity .8s ease;">
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 1: ENCABEZADO
+       Fondo: azul cielo con nubes y estrellas (imagen de fondo)
+  ══════════════════════════════════════ -->
+    <div class="section fade-up"
+      style="background-image: url('assets/images/hero.png'); background-size: cover; background-position: center;">
+      <!-- TODO: pon aquí background-image con tu imagen de fondo de nubes/estrellas -->
+
+      <p class="t-attention font-caps">Atención, Guerreros Z</p>
+
+      <!-- IMAGEN: bebé estilo Dragon Ball dentro de una cápsula espacial verde agua -->
+      <img src="assets/images/capsule-goku.png" alt="Bebé Dragon Ball dentro de cápsula espacial verde agua"
+        class="img-fluid" />
+
+
+      <p class="t-subtitulo font-display">
+        Una nueva energía<br>
+        está llegando a nuestro<br>
+        universo...
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 2: BABY SHOWER + NOMBRE
+       Fondo: azul pastel más claro
+  ══════════════════════════════════════ -->
+    <div class="section fade-up"
+      style="background-image: url('assets/images/bg-clouds.png'); background-size: cover; background-position: center;">
+      <!-- TODO: pon aquí background-image con tu imagen de fondo degradado/nubes -->
+
+      <p class="t-script-md font-script">La Dulce espera está por terminar...</p>
+
+      <p class="t-baby font-caps">BABY</p>
+      <p class="t-shower font-script">Shower</p>
+
+      <!-- IMAGEN: bebé Goku sentado sobre nube con biberón -->
+      <img src="assets/images/nube-goku.png" alt="Bebé Goku de Dragon Ball sobre nube mágica con biberón"
+        class="img-fluid" />
+
+      <p class="t-nombre font-script">Liam Gael</p>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 3: PAPITOS + FOTO
+       Fondo: azul muy claro / casi blanco
+  ══════════════════════════════════════ -->
+    <div class="section fade-up">
+
+      <p class="t-label font-caps">Mis Papitos</p>
+
+      <!-- IMAGEN: fotografía circular de la pareja de padres -->
+      <img src="assets/images/parents.png" alt="Fotografía circular de la pareja de padres Luz Edith y Esteban"
+        class="img-fluid" />
+
+      <p class="t-padres font-script">Luz Edith y Esteban</p>
+
+    </div>
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 4: TEXTOS DEL BEBÉ
+       Fondo: crema muy claro
+  ══════════════════════════════════════ -->
+    <div class="section fade-up"
+      style="background-image:  url('assets/images/bg-clouds-stars.png');background-size: cover;background-position: center; background-repeat: no-repeat; padding: 120px 28px;">
+
+      <p class="t-body font-caps">
+        Ellos ya están preparando todo para mi<br>llegada...
+      </p>
+
+      <p class="t-body font-caps">
+        Hoy sus corazones están llenos de<br>
+        ilusión porque muy pronto llegaré al<br>
+        momento de conocerme.
+      </p>
+
+      <p class="t-body font-caps">
+        Y quieren celebrar contigo. 🧡
+      </p>
+
+    </div>
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 5: FECHA
+       Fondo: crema / blanco
+  ══════════════════════════════════════ -->
+    <div class="section fade-up">
+
+      <p class="t-aventura font-caps">
+        Nuestra Aventura<br>Comienza en...
+      </p>
+
+      <div class="countdown-section">
+
+        <p class="countdown-label-top">Faltan</p>
+        <div class="countdown-grid">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-days">00</span>
+            <span class="countdown-unit">Días</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-hrs">00</span>
+            <span class="countdown-unit">Hrs</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-min">00</span>
+            <span class="countdown-unit">Min</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-sec">00</span>
+            <span class="countdown-unit">Seg</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="date-mes font-display">Septiembre</p>
+
+      <div class="date-row">
+        <span class="date-dia-label font-display">Sábado</span>
+        <span class="date-numero font-display">19</span>
+        <span class="date-hora font-display">3:30 p.m.</span>
+      </div>
+
+      <p class="date-anio font-display">2026</p>
+
+    </div>
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 6: UBICACIÓN
+       Fondo: azul muy claro / casi blanco
+  ══════════════════════════════════════ -->
+    <div class="section fade-up">
+
+      <!-- IMAGEN: fotografía  -->
+      <img src="assets/images/nube-goku-balloons.png" alt="Fotografía " class="img-fluid" />
+
+      <p class="t-location font-script">
+        Lugar
+      </p>
+
+      <p class="t-body font-caps">
+        salon Agora Tv. 48 #N0. 21-74,
+        El Bosque, Cartagena de Indias
+      </p>
+
+      <a class="button font-display" href="https://maps.app.goo.gl/1rN1gw4BkwLFfcNt8" target="_blank">VER MAPA</a>
+
+    </div>
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 7: ASISTENCIA
+       Fondo: azul muy claro / casi blanco
+  ══════════════════════════════════════ -->
+    <div class="section fade-up">
+
+      <p class="t-location font-script">
+        Aceptas la Misión
+      </p>
+
+      <p class="t-body font-caps">
+        Un día tan especial <br />
+        no estaría completo sin ti.
+      </p>
+
+      <p class="t-body font-caps">
+        Nos encantaría contar con tu presencia <br />
+        para celebrar la llegada <br />
+        de nuestro pequeño guerrero. <br />
+      </p>
+
+      <a class="button" href="https://wa.me/573217751025?text=Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Liam%20Gael%20%C2%A1Estoy%20listo%2Fa%20para%20esta%20gran%20aventura%21" target="_blank" rel="noopener noreferrer">
+        Confirmar Asistencia
+      </a>
+
+    </div>
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 8: REGALOS
+       Fondo: azul muy claro / casi blanco
+  ══════════════════════════════════════ -->
+    <div class="section fade-up">
+
+      <p class="t-location font-script">
+        Regalo
+      </p>
+
+      <p class="t-body font-caps">
+        Tu presencia será nuestro mejor regalo. <br />
+        Si deseas tener un detalle con nuestro pequeño guerrero, <br />
+        aquí encontrarás algunas sugerencias. <br>
+      </p>
+
+      <a class="button" href="#" target="_blank" rel="noopener noreferrer">
+        Ver lista de Regalos
+      </a>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       SECCIÓN 9: FOOTER
+       Fondo: azul cielo con nubes y las esferas del dragón (imagen de fondo)
+  ══════════════════════════════════════ -->
+    <div class="section fade-up"
+      style="background-image: url('assets/images/nube-goku-balls.png'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 60px 28px; min-height: 440px;">
+      <!-- TODO: pon aquí background-image con tu imagen de fondo de nubes/esferas -->
+
+      <p class="t-location font-script">Te Esperamos!</p>
+
+      <p class="t-body font-display">
+        para compartir juntos <br />
+        esta nueva aventura
+      </p>
+
+    </div>
+
+  </div><!-- /card -->
+  <script src="scripts/index.js"></script>
+
+</body>
+
+</html>
