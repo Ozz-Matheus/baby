@@ -73,7 +73,7 @@ function initObserver() {
 // LISTA DE REGALOS MODAL
 
 // URL de tu Apps Script implementado como Web App
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-aJss7tTXF_6lflJDXBG_0PQJFqWjnjoQUgd2dYOi7rPc8-fVYWzi-vvP4yTrQK8fBQ/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxv9iAmC_kO7TrcR03zpiM0BOR0rL7Wk_Z4O_46LNYJa1vF7CCng8Bi5xVvCzaMY4dWzw/exec";
 
 let regalosCache = [];
 let invitadosCache = [];
@@ -132,21 +132,25 @@ function renderGifts() {
       guestOptions += `<option value="${inv}">${inv}</option>`;
     });
 
+// Obtenemos la URL (considerando posibles variaciones de mayúsculas desde el Apps Script)
+    const imageUrl = item.miniatura || item.Miniatura;
+
     card.innerHTML = `
       <div class="gift-header">
-        <div>
+        ${imageUrl ? `<img src="${imageUrl}" alt="${item.nombre}" class="gift-img" loading="lazy" />` : ''}
+        <div class="gift-info">
           <div class="gift-title font-caps">${item.nombre}</div>
-          ${item.link ? `<a href="${item.link}" target="_blank" class="gift-link">Ver sugerencia de regalo</a>` : ''}
-        </div>
+          ${item.link && !isReserved ? `<a href="${item.link}" target="_blank" class="gift-link">Ver sugerencia</a>` : ''}
+          </div>
         <span class="font-display gift-status ${isReserved ? 'taken' : 'free'}">
           ${isReserved ? 'Reservado' : 'Disponible'}
         </span>
       </div>
 
       ${isReserved ? `
-        <p class="font-caps" style="font-size: 0.75rem; color: #555; margin: 0;">
-          <strong class="font-display">✅</strong>
-        </p>
+        <span class="font-caps" style="font-size: 0.75rem; color: #555; margin: 0;">
+          <strong class="font-display"><hr></strong>
+        </span>
       ` : `
         <div class="gift-action-box" id="action-box-${item.id}">
           <select id="select-guest-${item.id}" class="gift-select">

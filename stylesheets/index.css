@@ -187,7 +187,7 @@ body {
 }
 
 /* "Luz Edith y Esteban" — script mediano, color salmón */
-.t-padres {
+.t-family {
   font-size: 36px;
   color: #d4826a;
   margin-bottom: 16px;
@@ -541,15 +541,16 @@ body {
 
 .gift-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .gift-title {
   font-weight: 600;
   font-size: 0.95rem;
   color: #333;
+  margin-bottom: 4px;
 }
 
 .gift-link {
@@ -593,3 +594,19 @@ body {
   background: #fff;
 }
 
+/* --- Imágenes de Regalos --- */
+
+.gift-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.gift-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
