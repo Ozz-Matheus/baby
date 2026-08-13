@@ -12,12 +12,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Rouge+Script&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="stylesheets/index.css">
+  <link rel="stylesheet" href="stylesheets/index.css" />
 </head>
 
 <body>
 
-    <!-- AUDIO -->
+  <!-- AUDIO -->
   <audio id="bg-audio" loop>
     <source src="assets/audio/soundtrack.mp3" type="audio/mpeg">
   </audio>
@@ -55,7 +55,7 @@
     <p>Tienes una invitación especial</p>
     <button id="open-btn" class="button font-display" onclick="openInvitation()">ABRIR</button>
   </div>
-  
+
   <div id="main" class="card" style="opacity:0;transition:opacity .8s ease;">
 
     <!-- ══════════════════════════════════════
@@ -112,7 +112,8 @@
       <img src="assets/images/parents.png" alt="Fotografía circular de la pareja de padres Luz Edith y Esteban"
         class="img-fluid" />
 
-      <p class="t-family font-script">Luz Edith y Esteban</p>
+      <p class="t-family font-script">Luz Edith, Esteban</p>
+      <p class="t-family font-script">y mi hermano mayor Dante</p>
 
     </div>
 
@@ -120,13 +121,12 @@
        SECCIÓN 4: HERMANO + FOTO
        Fondo: azul muy claro / casi blanco
   ══════════════════════════════════════ -->
-    <div class="section fade-up">
+    <div class="section fade-up section-brother">
 
       <!-- IMAGEN: fotografía circular de la pareja de padres -->
       <img src="assets/images/brother.png" alt="Fotografía circular del hermano de Liam Gael, Liam Gael"
         class="img-fluid" />
 
-      <p class="t-family font-script">Mi hermano mayor Dante</p>
 
     </div>
 
@@ -138,7 +138,7 @@
       style="background-image:  url('assets/images/bg-clouds-stars.png');background-size: cover;background-position: center; background-repeat: no-repeat; padding: 120px 28px;">
 
       <p class="t-body font-caps">
-        Ellos ya están preparando todo para mi<br>llegada...
+        Ellos ya están preparando <br /> todo para mi llegada...
       </p>
 
       <p class="t-body font-caps">
@@ -242,7 +242,9 @@
         de nuestro pequeño guerrero. <br />
       </p>
 
-      <a class="button" href="https://wa.me/573217751025?text=Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Liam%20Gael%20%C2%A1Estoy%20listo%2Fa%20para%20esta%20gran%20aventura%21" target="_blank" rel="noopener noreferrer">
+      <a class="button"
+        href="https://wa.me/573217751025?text=Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Liam%20Gael%20%C2%A1Estoy%20listo%2Fa%20para%20esta%20gran%20aventura%21"
+        target="_blank" rel="noopener noreferrer">
         Confirmar Asistencia
       </a>
 
@@ -292,10 +294,10 @@
   <div id="gifts-modal" class="modal-overlay">
     <div class="modal-content card">
       <button class="modal-close" onclick="closeGiftsModal()">&times;</button>
-      
+
       <p class="t-location font-script" style="margin-bottom: 8px;">Mesa de Regalos</p>
       <p class="t-body font-caps" style="font-size: 0.85rem; margin-bottom: 20px;">
-        Hemos preparado una lista con algunas sugerencias. 🎁 
+        Hemos preparado una lista con algunas sugerencias. 🎁
         Selecciona un regalo para apartarlo a tu nombre. 💕
       </p>
       <!-- Loader de carga -->
@@ -308,7 +310,7 @@
       <div id="gifts-list" class="gifts-list" style="display: none;"></div>
     </div>
   </div>
-  
+
   <script src="scripts/index.js"></script>
 
 </body>
